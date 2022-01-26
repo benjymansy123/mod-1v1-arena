@@ -40,7 +40,7 @@ public:
 
     virtual void OnAfterConfigLoad(bool /*Reload*/) override
     {
-        std::stringstream ss(sConfigMgr->GetStringDefault("Arena1v1.ForbiddenTalentsIDs", "0"));
+        std::stringstream ss(sConfigMgr->GetOption<std::string>("Arena1v1.ForbiddenTalentsIDs", "0"));
 
         for (std::string blockedTalentsStr; std::getline(ss, blockedTalentsStr, ',');)
         {
