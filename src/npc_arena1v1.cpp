@@ -66,7 +66,7 @@ public:
 
     void OnLogin(Player* pPlayer) override
     {
-        if (sConfigMgr->GetBoolDefault("Arena1v1.Announcer", true))
+        if (sConfigMgr->GetOption<bool>("Arena1v1.Announcer", true))
             ChatHandler(pPlayer->GetSession()).SendSysMessage("This server is running the |cff4CFF00Arena 1v1 |rmodule.");
     }
 
@@ -97,7 +97,7 @@ public:
 
     void OnGetMaxPersonalArenaRatingRequirement(const Player* player, uint32 minslot, uint32& maxArenaRating) const override
     {
-        if (sConfigMgr->GetBoolDefault("Arena1v1.VendorRating", false) && minslot < (uint32)sConfigMgr->GetOption<int32>("Arena1v1.ArenaSlotID", 3))
+        if (sConfigMgr->GetOption<bool>("Arena1v1.VendorRating", false) && minslot < (uint32)sConfigMgr->GetOption<int32>("Arena1v1.ArenaSlotID", 3))
         {
             if (ArenaTeam* at = sArenaTeamMgr->GetArenaTeamByCaptain(player->GetGUID(), ARENA_TEAM_1V1))
             {
@@ -117,7 +117,7 @@ public:
         if (!player || !creature)
             return true;
 
-        if (sConfigMgr->GetBoolDefault("Arena1v1.Enable", true) == false)
+        if (sConfigMgr->GetOption<bool>("Arena1v1.Enable", true) == false)
         {
             ChatHandler(player->GetSession()).SendSysMessage("1v1 disabled!");
             return true;
@@ -385,7 +385,7 @@ private:
         if (!player)
             return false;
 
-        if (sConfigMgr->GetBoolDefault("Arena1v1.BlockForbiddenTalents", true) == false)
+        if (sConfigMgr->GetOption<bool>("Arena1v1.BlockForbiddenTalents", true) == false)
             return true;
 
         uint32 count = 0;
