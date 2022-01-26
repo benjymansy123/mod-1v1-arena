@@ -40,7 +40,7 @@ public:
 
     virtual void OnAfterConfigLoad(bool /*Reload*/) override
     {
-        std::string blockedTalentsStr = sConfigMgr->GetStringDefault("Arena1v1.ForbiddenTalentsIDs", "");
+        std::string blockedTalentsStr = sConfigMgr->GetOption<std::string>("Arena1v1.ForbiddenTalentsIDs", "");
         Tokenizer toks(blockedTalentsStr, ',');
         for (auto&& token : toks)
         {
