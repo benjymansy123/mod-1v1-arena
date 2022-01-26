@@ -437,7 +437,7 @@ public:
     {
         if (at->GetType() == ARENA_TEAM_1V1)
         {
-            points *= sConfigMgr->GetFloatDefault("Arena1v1.ArenaPointsMulti", 0.64f);
+            points *= sConfigMgr->GetOption<float>("Arena1v1.ArenaPointsMulti", 0.64f);
         }
     }
 
